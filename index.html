@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invizionz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'League Spartan', 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .big-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            opacity: 0.9;
+        }
+
+        .nav {
+            width: 100%;
+            height: 60px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 3px solid #222;
+        }
+        
+        .logo-small {
+            width: 80px;
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-icons i {
+            font-size: 26px;
+            color: #aaa;
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-icons i:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        #iframe-container {
+            width: 100%;
+            height: calc(100vh - 60px);
+            position: absolute;
+            top: 60px;
+            left: 0;
+            display: none;
+            background: #0a0a0a;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #0a0a0a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <img src="/assets/img/logo1.png" alt="Invizionz Logo" class="logo-small">
+        <div class="nav-icons">
+            <i class="fas fa-home" onclick="showHome()"></i>
+            <i class="fas fa-gamepad" onclick="loadPage('/games.html')"></i>
+            <i class="fas fa-search" onclick="loadPage('/search.html')"></i>
+            <i class="fas fa-handshake" onclick="loadPage('/partners.html')"></i>
+        </div>
+    </div>
+
+    <img src="/assets/img/logo1.png" alt="logo" class="big-logo" id="big-logo">
+
+    <div id="iframe-container">
+        <iframe id="content-frame"></iframe>
+    </div>
+
+    <script>
+        function loadPage(url) {
+            let iframeContainer = document.getElementById("iframe-container");
+            let iframe = document.getElementById("content-frame");
+
+            iframe.src = url;
+            iframeContainer.style.display = "block";
+            document.getElementById("big-logo").style.display = "none";
+        }
+
+        function showHome() {
+            document.getElementById("iframe-container").style.display = "none";
+            document.getElementById("big-logo").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
