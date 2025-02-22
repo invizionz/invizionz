@@ -1,4 +1,4 @@
-const CACHE_NAME = 'orbit-cache-v1';
+const CACHE_NAME = 'invizionz-cache-v1';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html', 
